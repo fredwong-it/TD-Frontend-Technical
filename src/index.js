@@ -11,6 +11,9 @@ import {test01} from './test01/app';
 import {test02} from './test02/app';
 
 import {dataService} from './test01/dataService';
+import {utilityFactory} from './test01/utility-factory';
+import {buttonLayout} from './test01/buttonlayout-directive';
+import {windowResize} from './test01/windowresize-directive';
 
 import './index.scss';
 
@@ -20,6 +23,9 @@ angular
   .module(app, ['ngAnimate', 'ngSanitize','ui.router', 'ui.bootstrap'])
   .config(routesConfig)
   .service('dataService', dataService)
+  .factory('utilityFactory', utilityFactory)
+  .directive('buttonLayout', buttonLayout)
+  .directive('windowResize', windowResize)
   .component('app', hello)
   .component('test01', test01)
   .component('test02', test02);

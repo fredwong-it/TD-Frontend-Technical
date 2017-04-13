@@ -1,5 +1,36 @@
-<div class="container">
-    <div ng-repeat="x in items">
-        <button>{{x.text}}</button>
-    </div>
+<div class="container text-center" window-resize>
+    <h2>Book an Appointment</h2>
+    <div>Our Investing Topics</div>
+    <h4>Pick a topic, then we'll find a time and place</h4>
+    <button class="btn btn-default btn-lg">Testing Testing Testing Testing Testing</button>
+    <div class="">
+        <div button-layout target-element="button">
+            <div ng-repeat="x in items" class="col-sm-6 col-xs-12">
+                <button class="btn btn-default btn-lg">{{x.text}}</button>
+            </div>
+            <!--<button class="btn btn-default">1</button>
+            <button class="btn btn-default">1</button>
+            <button class="btn btn-default">1</button>-->
+        </div>
+
+        <!--<div button-layout>
+            <button class="btn btn-default">1</button>
+            <button class="btn btn-default">1</button>
+            <button class="btn btn-default">1</button>
+        </div>
+        <div button-layout>
+            <button ng-repeat="item in items">
+                {{item.text}}
+            </button>
+        </div>-->
+        <!--<div button-layout>
+            <button ng-repeat="item in items" 
+            class="btn btn-default col-sm-6 col-xs-12">
+                {{item.text}}
+            </button>
+        </div>-->
+        
+        <h5>< Return to the previous screen</h5>
+    </div>    
 </div>
+
