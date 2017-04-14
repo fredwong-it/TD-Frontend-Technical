@@ -25,9 +25,7 @@ return {
           
           for (var i = 0; i < selectedElements.length; i++) {
             var offsetHeight = selectedElements[i].offsetHeight;
-            var offsetWidth = selectedElements[i].offsetWidth;
-
-            $log.info(selectedElements[i]);       
+            var offsetWidth = selectedElements[i].offsetWidth;   
 
             if (height < offsetHeight) {
               height = offsetHeight;
