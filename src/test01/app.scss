@@ -1,0 +1,38 @@
+$margin: 8px;
+$padding: 6px;
+$color: green;
+
+.test01 {
+
+  .option {
+     width: 90%;
+     margin: auto;
+     display: block;
+
+    button {
+      color: $color;
+      border-color: $color;
+    }
+  }
+
+  a {
+    h5 {
+      color: $color;
+    }
+  }
+
+  button {
+    margin: $margin;
+    // padding: $padding;
+    white-space:normal !important;
+    //word-wrap:break-word; 
+    overflow: hidden;
+    // white-space: nowrap;
+    // text-overflow: ellipsis;
+    // display: inline-block;
+  }
+
+  .color {
+    color: mediumseagreen;
+  }
+}

@@ -1,4 +1,5 @@
-import './dataService';
+import './data-service';
+import './app.scss';
 
 export const test01 = {
   template: require('./app.html'),

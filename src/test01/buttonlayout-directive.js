@@ -13,53 +13,46 @@ return {
       scope.service = utilityFactory;
 
       $timeout(function() {
-        if (!scope.targetEl) {
-          // if an element is not defined, it will look for the next available element
-          selectedElements = element.children();
-          //$log.info(1);
-        } else {
-          selectedElements = angular.element(element).find(scope.targetEl);
-          //$log.info(2);
-        }
         selectedElements = angular.element(element).find("button");
-        //$log.info(selectedElements);
         scope.checkMobileView();
       });
 
       // sets height of element
-      scope.calculateHeight = function() {
+      scope.calculateHeightWidth = function() {
         return $q(function(resolve) {
           var height = 0;
+          var width = 0;
 
           for (var i = 0; i < selectedElements.length; i++) {
-            var offsetHeight = selectedElements[i].offsetWidth;
-            //$log.info(offsetHeight);
+            var offsetHeight = selectedElements[i].offsetHeight;
+            var offsetWidth = selectedElements[i].offsetWidth;
+            
             if (height < offsetHeight) {
               height = offsetHeight;
               scope.height = height;
             }
+
+            if (width < offsetWidth) {
+              width = offsetWidth;
+              scope.width = width;
+            }
           }
           for (var i = 0; i < selectedElements.length; i++) {
-            angular.element(selectedElements[i]).css('width', height + 'px');
+            angular.element(selectedElements[i]).css('height', height + 'px');
+
+            // add 1 to fix the word breadking issue for "Review my everyday banking needs" in mobile
+            angular.element(selectedElements[i]).css('width', width + 1 + 'px');
           }
           resolve();
         });
       };
 
       // resets height to auto
-      scope.resetHeight = function () {
+      scope.resetHeightWidth = function () {
         return $q(function(resolve) {
           for (var i = 0; i < selectedElements.length; i++) {
+            angular.element(selectedElements[i]).css('height', "auto");      // auto
             angular.element(selectedElements[i]).css('width', "auto");      // auto
-          }
-          resolve();
-        });
-      };
-
-      scope.setHeight = function () {
-        return $q(function(resolve) {
-          for (var i = 0; i < selectedElements.length; i++) {
-            angular.element(selectedElements[i]).css('width', '250px');      // auto
           }
           resolve();
         });
@@ -67,37 +60,15 @@ return {
 
       // checks to see if mobile and applies class and styles
       scope.checkMobileView = function() {
-          var type = scope.service.isMobile();
-
-        switch (type) {
-            case "desktop":
-                scope.resetHeight().then(function() {
-                    scope.calculateHeight();
-                });
-                break;
-            case "tablet":
-                scope.setHeight();
-                break;
-            case "mobile":
-                scope.resetHeight().then(function() {
-                    scope.calculateHeight();
-                });
-                break;
-        }
-        // if (scope.service.isMobile()) {
-        //   scope.resetHeight();
-        // } else {
-        //   scope.resetHeight().then(function() {
-        //     scope.calculateHeight();
-        //   });
-        // }
+        scope.resetHeightWidth().then(function() {
+          scope.calculateHeightWidth();
+        });
       };
 
       // watches screen resize and re-calculates the height of the elements
       scope.$on('window-resize', function() {
         $timeout(function() {
           scope.checkMobileView();
-          //$log.info("resize");
         });
       });
     }

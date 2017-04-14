@@ -10,7 +10,7 @@ import {hello} from './app/hello';
 import {test01} from './test01/app';
 import {test02} from './test02/app';
 
-import {dataService} from './test01/dataService';
+import {dataService} from './test01/data-service';
 import {utilityFactory} from './test01/utility-factory';
 import {buttonLayout} from './test01/buttonlayout-directive';
 import {windowResize} from './test01/windowresize-directive';
