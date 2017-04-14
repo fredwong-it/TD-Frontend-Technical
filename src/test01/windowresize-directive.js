@@ -6,7 +6,7 @@ export const windowResize = function($window, $rootScope, $log) {
         scope.$broadcast('window-resize', {
           'eventTarget': e.target
         });
-
+        //$log.info(1);
         $rootScope.$broadcast('window-resize', {
           'eventTarget': e.target
         });

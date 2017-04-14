@@ -14,7 +14,7 @@ return {
 
       $timeout(function() {
         selectedElements = angular.element(element).find("button");
-        scope.checkMobileView();
+        scope.adjustButtonLayout();
       });
 
       // sets height of element
@@ -22,11 +22,13 @@ return {
         return $q(function(resolve) {
           var height = 0;
           var width = 0;
-
+          
           for (var i = 0; i < selectedElements.length; i++) {
             var offsetHeight = selectedElements[i].offsetHeight;
             var offsetWidth = selectedElements[i].offsetWidth;
-            
+
+            $log.info(selectedElements[i]);       
+
             if (height < offsetHeight) {
               height = offsetHeight;
               scope.height = height;
@@ -37,9 +39,10 @@ return {
               scope.width = width;
             }
           }
+
           for (var i = 0; i < selectedElements.length; i++) {
             angular.element(selectedElements[i]).css('height', height + 'px');
-
+            
             // add 1 to fix the word breadking issue for "Review my everyday banking needs" in mobile
             angular.element(selectedElements[i]).css('width', width + 1 + 'px');
           }
@@ -59,7 +62,8 @@ return {
       };
 
       // checks to see if mobile and applies class and styles
-      scope.checkMobileView = function() {
+      scope.adjustButtonLayout = function() {
+        //$log.info(2);
         scope.resetHeightWidth().then(function() {
           scope.calculateHeightWidth();
         });
@@ -68,41 +72,9 @@ return {
       // watches screen resize and re-calculates the height of the elements
       scope.$on('window-resize', function() {
         $timeout(function() {
-          scope.checkMobileView();
+          scope.adjustButtonLayout();
         });
       });
     }
   }
-
-
-//   return {
-//     restrict: 'A',
-//     link: function(scope, element, attr) {
-//       var maxWidth = 0;
-
-//     //   if (scope.$last === true) {
-//     //     $timeout(function() {
-//     //       var allButtons = element.find('button');
-//     //       $log.info(element.find('button'));
-//     //       //check the maximum width of element
-//     //       angular.forEach(allButtons, function(ele, ind) {
-//     //         //below code will find maxWidth
-//     //         maxWidth = ele.innerWidth > maxWidth ? ele.innerWidth : maxWidth;
-//     //         //alert(innerWidth);
-//     //       });
-//     //       //allButtons.css('width', "400px")
-//     //       allButtons.text(maxWidth);
-          
-//     //     });
-//     //   }
-//         //       var allButtons = element.find('button');
-//         //   //check the maximum width of element
-//         //   angular.forEach(allButtons, function(ele, ind) {
-//         //     //below code will find maxWidth
-//         //     maxWidth = ele.innerWidth > maxWidth ? ele.innerWidth : maxWidth;
-//         //   });
-//         //   allButtons.css('width', maxWidth)
-//         //   allButtons.text(maxWidth);
-//     }
-//   }
 }

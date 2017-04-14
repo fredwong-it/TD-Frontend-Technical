@@ -12,10 +12,12 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state('test01', {
       url: '/test01',
-      component: 'test01'
+      component: 'test01',
+      title: 'Book an Appointment'
     })
     .state('test02', {
       url: '/test02',
-      component: 'test02'
+      component: 'test02',
+      title: 'Send Transfer'
     });
 }

@@ -1,6 +1,9 @@
 import angular from 'angular';
 import {ngAnimate} from 'angular-animate';
 import {ngSanitize} from 'angular-sanitize';
+import {tmhDynamicLocale} from 'angular-dynamic-locale';
+import {ngAria} from 'angular-aria';
+
 import 'angular-ui-bootstrap';
 
 import 'angular-ui-router';
@@ -20,7 +23,7 @@ import './index.scss';
 export const app = 'app';
 
 angular
-  .module(app, ['ngAnimate', 'ngSanitize','ui.router', 'ui.bootstrap'])
+  .module(app, ['ngAnimate', 'ngSanitize','ui.router', 'ui.bootstrap', 'tmh.dynamicLocale', 'ngAria'])
   .config(routesConfig)
   .service('dataService', dataService)
   .factory('utilityFactory', utilityFactory)

@@ -23,16 +23,8 @@ $color: green;
 
   button {
     margin: $margin;
-    // padding: $padding;
     white-space:normal !important;
-    //word-wrap:break-word; 
     overflow: hidden;
-    // white-space: nowrap;
-    // text-overflow: ellipsis;
-    // display: inline-block;
-  }
-
-  .color {
-    color: mediumseagreen;
+    display: block
   }
 }

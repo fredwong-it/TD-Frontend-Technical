@@ -1,17 +1,21 @@
 <!doctype html>
-<html>
+<html ng-app="app">
   <head>
     <base href="/">
     <meta charset="utf-8">
-    <title>FountainJS</title>
+    <title ng-bind="title">FountainJS</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="http://fountainjs.io/assets/imgs/fountain.png" />
     <link rel="stylesheet" type="text/css" href="./vendor/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./vendor/font-awesome/css/font-awesome.min.css">
+    <script src="./node_modules/angular-i18n/angular-locale_en.js"></script>
+    <script src="./node_modules/angular-i18n/angular-locale_fr.js"></script>
+
+    <!--<script src="//code.angularjs.org/snapshot/angular-aria.js"></script>-->
   </head>
 
-  <body ng-app="app">
+  <body>
     <ui-view></ui-view>
   </body>
 </html>
